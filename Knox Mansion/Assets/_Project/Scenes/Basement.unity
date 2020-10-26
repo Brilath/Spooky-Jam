@@ -10396,12 +10396,12 @@ PrefabInstance:
     - target: {fileID: 3878008790182147104, guid: 6f34212424a90e043905bb4513ea760c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.48
+      value: -4.67
       objectReference: {fileID: 0}
     - target: {fileID: 3878008790182147104, guid: 6f34212424a90e043905bb4513ea760c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.74
+      value: -1.49
       objectReference: {fileID: 0}
     - target: {fileID: 3878008790182147104, guid: 6f34212424a90e043905bb4513ea760c,
         type: 3}
@@ -10717,12 +10717,12 @@ PrefabInstance:
     - target: {fileID: 3878008790182147104, guid: 6f34212424a90e043905bb4513ea760c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.93
+      value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 3878008790182147104, guid: 6f34212424a90e043905bb4513ea760c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.65
+      value: -2.03
       objectReference: {fileID: 0}
     - target: {fileID: 3878008790182147104, guid: 6f34212424a90e043905bb4513ea760c,
         type: 3}
@@ -12838,12 +12838,12 @@ PrefabInstance:
     - target: {fileID: 5577547698990075567, guid: 1225524dfb51311489e9822486661cae,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.81
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 5577547698990075567, guid: 1225524dfb51311489e9822486661cae,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -21.74
+      value: -13.87
       objectReference: {fileID: 0}
     - target: {fileID: 5577547698990075567, guid: 1225524dfb51311489e9822486661cae,
         type: 3}
@@ -13660,12 +13660,12 @@ PrefabInstance:
     - target: {fileID: 3878008790182147104, guid: 6f34212424a90e043905bb4513ea760c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.37
+      value: 4.58
       objectReference: {fileID: 0}
     - target: {fileID: 3878008790182147104, guid: 6f34212424a90e043905bb4513ea760c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.99
+      value: 0.89
       objectReference: {fileID: 0}
     - target: {fileID: 3878008790182147104, guid: 6f34212424a90e043905bb4513ea760c,
         type: 3}
@@ -13810,12 +13810,12 @@ PrefabInstance:
     - target: {fileID: 3878008790182147104, guid: 6f34212424a90e043905bb4513ea760c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.98
+      value: -6.71
       objectReference: {fileID: 0}
     - target: {fileID: 3878008790182147104, guid: 6f34212424a90e043905bb4513ea760c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.06
+      value: 1.16
       objectReference: {fileID: 0}
     - target: {fileID: 3878008790182147104, guid: 6f34212424a90e043905bb4513ea760c,
         type: 3}
@@ -15758,6 +15758,7 @@ GameObject:
   - component: {fileID: 1661120278116737546}
   - component: {fileID: 1661120278116737548}
   - component: {fileID: 1661120278116737549}
+  - component: {fileID: 1661120278116737550}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -15787,7 +15788,8 @@ MonoBehaviour:
   hasCalledOut: 0
   audioSource: {fileID: 1661120278116737549}
   callSound: {fileID: 8300000, guid: e72be7c899037b84dbdad824d4ae8445, type: 3}
-  hurtSound: {fileID: 8300000, guid: ff782c14a58d17f4d8f2a09a34b8b83b, type: 3}
+  hurtSource: {fileID: 1661120278116737550}
+  hurtSound: {fileID: 8300000, guid: 1f1626875bd48274283a62f7cfcde056, type: 3}
 --- !u!61 &1661120278116737546
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15870,7 +15872,103 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.029
-  m_Pitch: 1
+  m_Pitch: 1.2
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1661120278116737550
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661120278116737544}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.7
+  m_Pitch: 1.2
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -16135,6 +16233,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max: 15
   current: 0
+  audioSource: {fileID: 0}
+  healSound: {fileID: 0}
+  hurtSound: {fileID: 0}
 --- !u!61 &3487824310783839604
 BoxCollider2D:
   m_ObjectHideFlags: 0

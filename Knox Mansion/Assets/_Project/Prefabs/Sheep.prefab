@@ -197,6 +197,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: c502fb50c96edbc4c939a9262bd4108a, type: 3}
   chompSound: {fileID: 8300000, guid: 86cc3c34a5a4d374c909854e3bfcee7f, type: 3}
   bodyCollider2D: {fileID: 4617366889928434648}
+  targetCollider2D: {fileID: 1349731741056670559}
   bodyRenderer: {fileID: 3878008790563053193}
   headRenderer: {fileID: 3878008789709010465}
   tailRenderer: {fileID: 3878008790561340563}

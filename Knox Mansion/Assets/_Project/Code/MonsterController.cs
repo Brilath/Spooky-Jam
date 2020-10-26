@@ -21,6 +21,7 @@ public class MonsterController : MonoBehaviour
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private AudioClip chompSound;
     [SerializeField] private CircleCollider2D bodyCollider2D;
+    [SerializeField] private BoxCollider2D targetCollider2D;
     [SerializeField] private SpriteRenderer bodyRenderer;
     [SerializeField] private SpriteRenderer headRenderer;
     [SerializeField] private SpriteRenderer tailRenderer;
@@ -60,6 +61,7 @@ public class MonsterController : MonoBehaviour
         headRenderer.color = deathColor;
         tailRenderer.color = deathColor;
         bodyCollider2D.enabled = false;
+        targetCollider2D.enabled = false;
         audioSource.PlayOneShot(deathSound);
         anim.SetFloat("speed", 0);
         this.enabled = false;

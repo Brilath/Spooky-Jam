@@ -14,6 +14,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private bool hasCalledOut;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip callSound;
+    [SerializeField] private AudioSource hurtSource;
     [SerializeField] private AudioClip hurtSound;
 
 
@@ -31,10 +32,16 @@ public class BossController : MonoBehaviour
 
     private void HandleDamageTaken()
     {
-        if(!hasCalledOut)
+        if (!hasCalledOut)
+        {
+            hasCalledOut = true;
             audioSource.PlayOneShot(callSound);
+        }
         else
-            audioSource.PlayOneShot(hurtSound);
+        {
+            if(!hurtSource.isPlaying)
+                hurtSource.PlayOneShot(hurtSound);
+        }
     }
 
     private void HandleDeath(GameObject deadObject)
