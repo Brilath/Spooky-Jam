@@ -14,6 +14,16 @@ public class MonsterController : MonoBehaviour
     [SerializeField] private bool hasTarget;
     [SerializeField] private LayerMask playerMask;
 
+    private void Awake()
+    {
+        Health.OnDamageTaken += HandleDamageTaken;
+    }
+
+    private void OnDestroy()
+    {
+        Health.OnDamageTaken -= HandleDamageTaken;
+    }
+
     private void Update()
     {
         if(hasTarget)
@@ -22,6 +32,11 @@ public class MonsterController : MonoBehaviour
         }
     }
 
+    private void HandleDamageTaken()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        hasTarget = true;
+    }
 
     private void HandleMovement()
     {
@@ -35,7 +50,7 @@ public class MonsterController : MonoBehaviour
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
-        else
+        else if(CanAttack())
         {
             Attack();
         }
@@ -43,28 +58,16 @@ public class MonsterController : MonoBehaviour
 
     private void Attack()
     {
-        Debug.Log($"Attacking Player");
         Collider2D player = Physics2D.OverlapCircle(transform.localPosition, attackRange, playerMask);
-        if (player == null) return;
+        if (player == null) return;        
 
-        Debug.Log($"actAttacking Player");
-
-        if (CanAttack())
-        {
-            player.GetComponent<Health>().TakeDamage(attackAmount);
-            nextAttack = Time.time + attackSpeed;
-            StartCoroutine(ChillOut());
-        }
+        player.GetComponent<Health>().TakeDamage(attackAmount);
+        nextAttack = Time.time + attackSpeed;
     }
 
     private bool CanAttack()
     {
         return Time.time >= nextAttack;
-    }
-
-    private IEnumerator ChillOut()
-    {
-        yield return new WaitForSeconds(attackTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -74,5 +77,13 @@ public class MonsterController : MonoBehaviour
             target = collision.gameObject.transform;
             hasTarget = true;
         }
+    }
+
+    public void Agro()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        
+        if(target != null)
+            hasTarget = true;
     }
 }

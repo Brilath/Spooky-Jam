@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3878008789709010464}
   - component: {fileID: 3878008789709010465}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 1825712861906175933}
   - component: {fileID: 1349731741056670559}
   - component: {fileID: 1937013114}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sheep
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3878008790182147107}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -232,7 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3878008790561340562}
   - component: {fileID: 3878008790561340563}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3878008790563053192}
   - component: {fileID: 3878008790563053193}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +394,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3878008791033473076}
   - component: {fileID: 3878008791033473077}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +466,7 @@ GameObject:
   m_Component:
   - component: {fileID: 194818189402598751}
   - component: {fileID: 3387216950017950546}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Point Light 2D (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

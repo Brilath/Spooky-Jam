@@ -6,6 +6,7 @@ public class BulletController : MonoBehaviour
     [SerializeField] private float forceAmount;
     [SerializeField] private float lifeSpan;
     [SerializeField] private int damage;
+    [SerializeField] private bool playerBullet;
 
     private void Start()
     {
@@ -13,23 +14,27 @@ public class BulletController : MonoBehaviour
         Destroy(gameObject, lifeSpan);     
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if(string.Compare(collision.gameObject.tag, "Monster") == 0)
-    //    {
-    //        collision.GetComponent<Health>().TakeDamage(damage);
-    //    }
-
-    //    Destroy(gameObject);
-    //}
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log($"Bullet hit {collision.gameObject.tag}");
-        if (string.Compare(collision.gameObject.tag, "Monster") == 0)
+        if (playerBullet)
         {
-            Debug.Log("Hurt monster");
-            collision.gameObject.GetComponent<Health>().TakeDamage(damage);
+            if (string.Compare(collision.gameObject.tag, "Monster") == 0)
+            {
+                collision.gameObject.GetComponent<Health>().TakeDamage(damage);
+                collision.gameObject.GetComponent<MonsterController>().Agro();
+            }
+            else if(string.Compare(collision.gameObject.tag, "Boss") == 0)
+            {
+                collision.gameObject.GetComponent<Health>().TakeDamage(damage);
+            }
+        }
+        else
+        {
+            if (string.Compare(collision.gameObject.tag, "Player") == 0 || string.Compare(collision.gameObject.tag, "Monster") == 0)
+            {
+                Debug.Log($"Hurting {gameObject.tag}");
+                collision.gameObject.GetComponent<Health>().TakeDamage(damage);
+            }
         }
 
         Destroy(gameObject);

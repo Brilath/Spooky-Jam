@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Monster
   - Bullet
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Objects
   - Characters
   - Bullet
-  - 
-  - 
+  - EnemyBullet
+  - Enemy
   - 
   - 
   - 

@@ -9,10 +9,11 @@ public class Health : MonoBehaviour
     [SerializeField] private int current;
 
     public static Action<int> OnHealthChanged = delegate {};
+    public static Action OnDamageTaken = delegate { };
 
     private void Start()
     {
-        if (string.Compare(gameObject.tag, "Monster") == 0)
+        if (string.Compare(gameObject.tag, "Monster") == 0 || string.Compare(gameObject.tag, "Boss") == 0)
         {
             current = max;
         }        
@@ -24,11 +25,15 @@ public class Health : MonoBehaviour
         current = Mathf.Clamp(current, 0, max);
         if (string.Compare(gameObject.tag, "Player") == 0)
         {
-            OnHealthChanged?.Invoke(current);
+            UpdatePlayerHealth();
         }
         else if (current <= 0)
         {
             Destroy(gameObject);
+        }
+        else
+        {
+            //OnDamageTaken?.Invoke();
         }
     }
 
@@ -38,7 +43,7 @@ public class Health : MonoBehaviour
         current = Mathf.Clamp(current, 0, max);
         if (string.Compare(gameObject.tag, "Player") == 0)
         {
-            OnHealthChanged?.Invoke(current);
+            UpdatePlayerHealth();
         }
     }
 
@@ -48,7 +53,13 @@ public class Health : MonoBehaviour
         current = Mathf.Clamp(current, 0, max);
         if (string.Compare(gameObject.tag, "Player") == 0)
         {
-            OnHealthChanged?.Invoke(current);
+            UpdatePlayerHealth();
         }
+    }
+
+    private void UpdatePlayerHealth()
+    {
+        PlayerPrefs.SetInt("HEALTH", current);
+        OnHealthChanged?.Invoke(current);
     }
 }

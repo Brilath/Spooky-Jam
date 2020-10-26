@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +20,20 @@ public class MovementController : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         sceneCamera = Camera.main;
+        Health.OnHealthChanged += HandleHealthChange;
+    }
+
+    private void OnDestroy()
+    {
+        Health.OnHealthChanged -= HandleHealthChange;
+    }
+
+    private void HandleHealthChange(int health)
+    {
+        if(health <= 0 )
+        {
+            this.enabled = false;
+        }
     }
 
     private void Update()
