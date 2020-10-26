@@ -10,6 +10,10 @@ public class Health : MonoBehaviour
 
     public static Action<int> OnHealthChanged = delegate {};
     public static Action OnDamageTaken = delegate { };
+    public static Action<GameObject> OnDeath = delegate { };
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip healSound;
+    [SerializeField] private AudioClip hurtSound;
 
     private void Start()
     {
@@ -25,15 +29,16 @@ public class Health : MonoBehaviour
         current = Mathf.Clamp(current, 0, max);
         if (string.Compare(gameObject.tag, "Player") == 0)
         {
+            audioSource.PlayOneShot(hurtSound);
             UpdatePlayerHealth();
         }
         else if (current <= 0)
         {
-            Destroy(gameObject);
+            OnDeath?.Invoke(gameObject);
         }
-        else
+        else if(string.Compare(gameObject.tag, "Boss") == 0)
         {
-            //OnDamageTaken?.Invoke();
+            OnDamageTaken?.Invoke();
         }
     }
 
@@ -43,6 +48,7 @@ public class Health : MonoBehaviour
         current = Mathf.Clamp(current, 0, max);
         if (string.Compare(gameObject.tag, "Player") == 0)
         {
+            audioSource.PlayOneShot(healSound);
             UpdatePlayerHealth();
         }
     }
@@ -58,7 +64,7 @@ public class Health : MonoBehaviour
     }
 
     private void UpdatePlayerHealth()
-    {
+    {        
         PlayerPrefs.SetInt("HEALTH", current);
         OnHealthChanged?.Invoke(current);
     }

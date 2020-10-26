@@ -16,6 +16,10 @@ public class MovementController : MonoBehaviour
     [SerializeField] private Vector2 mouseScreenPosition;
     [SerializeField] private Vector2 priorMouseScreenPosition;
 
+    [SerializeField] private Animator anim;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip walkClip;
+
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -48,8 +52,13 @@ public class MovementController : MonoBehaviour
     private void FixedUpdate()
     {
         body.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+        anim.SetFloat("speed", body.velocity.magnitude);
+        if(body.velocity.magnitude > 0 && !audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(walkClip);
+        }
 
-        if(priorMouseScreenPosition != mouseScreenPosition)
+        if (priorMouseScreenPosition != mouseScreenPosition)
         {
             mousePosition = sceneCamera.ScreenToWorldPoint(mouseScreenPosition);
             Vector2 aimDirection = mousePosition - body.position;

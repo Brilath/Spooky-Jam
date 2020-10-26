@@ -7,6 +7,8 @@ public class AttackController : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float attackRate;
     [SerializeField] private float nextAttack;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip attackClip;
 
     private void Update()
     {
@@ -22,6 +24,7 @@ public class AttackController : MonoBehaviour
 
     private void Fire()
     {
+        audioSource.PlayOneShot(attackClip);
         Instantiate(bulletPrefab, attackPoint.position, attackPoint.rotation);
     }
 }

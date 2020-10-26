@@ -8,6 +8,9 @@ public class ItemController : MonoBehaviour
 {
     [SerializeField] private GameObject pistol;
     [SerializeField] private GameObject flashLight;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip flashLightOnClip;
+    [SerializeField] private AudioClip rackPistolClip;
 
     private void Update()
     {
@@ -24,12 +27,14 @@ public class ItemController : MonoBehaviour
     private void ToggleItems(GameObject item)
     {
         if(pistol.Equals(item))
-        {
+        {            
+            audioSource.PlayOneShot(rackPistolClip);
             pistol.SetActive(true);
             flashLight.SetActive(false);
         }
         else
         {
+            audioSource.PlayOneShot(flashLightOnClip);
             pistol.SetActive(false);
             flashLight.SetActive(true);
         }
