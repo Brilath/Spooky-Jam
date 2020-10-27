@@ -25,19 +25,26 @@ public class MovementController : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         sceneCamera = Camera.main;
         Health.OnHealthChanged += HandleHealthChange;
+        WinController.OnWinGame += HandleWinGame;
     }
 
     private void OnDestroy()
     {
         Health.OnHealthChanged -= HandleHealthChange;
+        WinController.OnWinGame -= HandleWinGame;
     }
 
     private void HandleHealthChange(int health)
     {
         if(health <= 0 )
         {
-            this.enabled = false;
+            enabled = false;
         }
+    }
+
+    private void HandleWinGame()
+    {
+        enabled = false;
     }
 
     private void Update()
